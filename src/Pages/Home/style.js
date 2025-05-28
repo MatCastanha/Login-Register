@@ -39,22 +39,9 @@ export const CheckFormContainer = styled.form`
    gap: 8px;
 `;
 
-export const FormRegisterButton = styled.form`
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   height: 50px;
-`;
-
 export const Label = styled.label`
-   display: flex;
-   font-size: 14px;
-   margin-left: 2.5px;
-`;
-
-export const LabelRegister = styled.label`
    display: block;
-   font-size: 11px;
+   font-size: 14px;
    margin-left: 2.5px;
 `;
 
@@ -86,14 +73,4 @@ export const Button = styled.button`
    padding: 0.5px 120px;
    background-color: blue;
    color: white;
-   cursor: pointer;
-`;
-
-export const ButtonText = styled.button`
-   display: flex;
-   font-size: 11px;
-   color: blue;
-   background: none;
-   border: 0;
-   cursor: pointer;
 `;
