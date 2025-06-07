@@ -16,29 +16,46 @@ const Login = () => {
 
     try {
       
+      const UsuarioAdm = {
+        nome:"Adm",
+        email:"adm@gmail.com",
+        senha:"Adm1234",
+      };
+
+      localStorage.setItem("Adm", JSON.stringify(UsuarioAdm));
+
+
       // Busca todos os usuários cadastrados
+      const Adms = JSON.parse(localStorage.getItem("Adm")) || [];
       const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
       // Procura o usuário com email e senha correspondentes
+      const Adm = Adms.find(
+        (user) => user.email === email && user.senha === senha
+      );
       const usuario = usuarios.find(
         (user) => user.email === email && user.senha === senha
       );
 
       // verificaao do objeto - essa linha pergunta se o objeto é vazia, caso seja quero dizer que nao existe usuário na base.
       if (!usuario) {
-        setErro("Nenhum usuário encontrado.");
+        setErro("Usuario ou Senha Invalidaos.");
         return;
       }
 
       // compara usuario logado com os ususários da base
       if (usuario) {
-        alert("Login realizado com sucesso!");
-        navigate('/home/');
-
-      } else {
-        setErro("Usuário ou senha inválido");
+        alert("Login realizado com sucesso!"); 
+        navigate('/homeUser/');
       }
-    } catch (erro) {
+      
+      if (Adm) {
+        alert("Bem-Vindo Adm!");
+        navigate('/homeAdm/');
+      }
+
+    } catch (err) {
+      console.error(err);
       setErro(`Erro ao fazer login. Tente novamente mais tarde.,${erro}`);
     }
   };
@@ -56,10 +73,30 @@ const Login = () => {
         
         <S.FormContainer>
           <S.Label>Email</S.Label>
-          <S.Input type="text" placeholder="Insira seu email" value={email} onChange={(e) =>{setEmail(e.target.value); setErro({erro})}}/>
+          <S.Input
+           type="text"
+           placeholder="Insira seu email" 
+           value={email}
+           onChange={(e) =>{
+            setEmail(e.target.value); 
+            setErro("");
+            }}
+          />
 
           <S.Label>Senha</S.Label>
-          <S.Input type="password" placeholder="Insira sua senha" value={senha} onChange={(e) =>{setSenha(e.target.value); setErro({erro})}}/>
+          <S.Input
+           type="password"
+           placeholder="Insira sua senha"
+           value={senha}
+            onChange={(e) =>{
+              setSenha(e.target.value);
+              setErro("");
+            }}
+          />
+
+          {erro && (
+            <p style={{ color: "red", marginTop: "10px" }}>{erro}</p>
+          )}
           
           <S.CheckFormContainer>
             <S.CheckInput type="checkbox" id="LembreMim"/>
@@ -86,3 +123,4 @@ const Login = () => {
 }
 
 export default Login;
+  
