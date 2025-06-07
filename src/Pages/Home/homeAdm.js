@@ -10,6 +10,8 @@ const HomeAdm = () => {
     senha: "",
   });
 
+  const Adm = JSON.parse(localStorage.getItem("Adm")) || [];
+
   useEffect(() => {
     const dados = localStorage.getItem("usuarios");
     if (dados) {
@@ -48,12 +50,17 @@ const HomeAdm = () => {
     setUsuarioEditado({ ...usuarioEditado, [name]: value });
   };
 
+  const handleSair = () => {
+    window.location.href = "/login";
+    localStorage.removeItem("emailLogado");
+  }
+
   return (
     <S.Container>
       <S.Header>
         <S.ContentDiv1>
-          <S.P>Ola, Seja bem-vindo</S.P>
-          <S.Button>Sair</S.Button>  
+          <S.P>Ola, Seja Bem-Vindo <S.Nome>{Adm.nome}</S.Nome></S.P>
+          <S.Button onClick={handleSair}>Sair</S.Button>  
         </S.ContentDiv1>
       </S.Header>
       <S.ContentDiv2>

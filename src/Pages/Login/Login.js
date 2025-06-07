@@ -23,20 +23,23 @@ const Login = () => {
       };
 
       localStorage.setItem("Adm", JSON.stringify(UsuarioAdm));
+      localStorage.setItem("emailLogado", email);
 
 
       // Busca todos os usuários cadastrados
-      const Adms = JSON.parse(localStorage.getItem("Adm")) || [];
+      const Adm = JSON.parse(localStorage.getItem("Adm"));
       const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
       // Procura o usuário com email e senha correspondentes
-      const Adm = Adms.find(
-        (user) => user.email === email && user.senha === senha
-      );
       const usuario = usuarios.find(
         (user) => user.email === email && user.senha === senha
       );
 
+      if (Adm.email === email && Adm.senha === senha) {
+        alert("Bem-Vindo Adm!");
+        navigate('/homeAdm/');
+      }
+      
       // verificaao do objeto - essa linha pergunta se o objeto é vazia, caso seja quero dizer que nao existe usuário na base.
       if (!usuario) {
         setErro("Usuario ou Senha Invalidaos.");
@@ -44,14 +47,10 @@ const Login = () => {
       }
 
       // compara usuario logado com os ususários da base
+
       if (usuario) {
         alert("Login realizado com sucesso!"); 
         navigate('/homeUser/');
-      }
-      
-      if (Adm) {
-        alert("Bem-Vindo Adm!");
-        navigate('/homeAdm/');
       }
 
     } catch (err) {

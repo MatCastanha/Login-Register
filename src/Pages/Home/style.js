@@ -132,3 +132,8 @@ export const CancelButton = styled(Button)`
       background-color: red;
    }
 `;
+
+export const Nome = styled.span`
+  color: #407BFF;
+  font-weight: bold;
+`;
