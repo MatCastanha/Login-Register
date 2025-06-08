@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { InputMask } from "@react-input/mask";
 
 export const Container = styled.div`
    display: flex;
@@ -103,6 +104,9 @@ export const TH = styled.th`
 
 export const TD = styled(TH)`
    font-weight: normal;
+`;
+
+export const InputMasks = styled(InputMask)`
 `;
 
 export const Button = styled.button`

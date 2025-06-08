@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { InputMask } from "@react-input/mask";
 
 export const Container = styled.div`
    display: flex;
@@ -46,6 +47,17 @@ export const Input = styled.input`
    gap: 8px;
 `;
 
+export const InputMasks = styled(InputMask)`
+   padding: 10px;
+   margin: 0 0 10px;
+   border-radius: 10px;
+   border: 1px solid;
+   width: 100%;
+   max-width: 404px;
+   box-sizing: border-box;
+   gap: 8px;
+`;
+
 export const Button = styled.button`
    display: flex;
    align-items: flex-start;
@@ -58,4 +70,17 @@ export const Button = styled.button`
    background-color: blue;
    color: white;
    cursor: pointer;
+`;
+
+export const ToggleSenha = styled.button`
+  margin-top: 5px;
+  background: none;
+  border: none;
+  color: #007BFF;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
