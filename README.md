@@ -1,70 +1,140 @@
-# Getting Started with Create React App
+# Sistema de Login e Cadastro com Painel de Usuário e Administrador
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto é uma aplicação React com funcionalidades de cadastro, login e gerenciamento de usuários, utilizando `React Hook Form`, `localStorage` e navegação com `react-router-dom`. O sistema possui dois perfis principais: **Usuário Comum** e **Administrador**.
 
-## Available Scripts
+---
+## 🧑 Autores
 
-In the project directory, you can run:
+- Repositório: [https://github.com/MatCastanha]
 
-### `npm start`
+- **Gabriel Cerqueira** — RA: 213118  
+  └── Responsável pela criação da tela de **Cadastro**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Giovani Barbosa** — RA: 213458  
+  └── Responsável pela criação da tela de **Login**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Gustavo Araujo** — RA: 214031  
+  └── Responsável pelo **Design/Aparência do site** (protótipo no Figma)
 
-### `npm test`
+- **João Pedro** — RA: 213429  
+  └── Responsável pela criação da tela de **HomeUser**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Matheus Castanha** — RA: 207588  
+  └── Responsável pela criação da tela de **HomeAdm**
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Funcionalidades
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Cadastro de novos usuários com validação de formulário.
+- Login com autenticação baseada em `localStorage`.
+- Painel do Usuário com informações pessoais.
+- Painel do Administrador com lista de todos os usuários cadastrados e possibilidade de editar dados.
+- Máscara de telefone com `react-input-mask`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🧱 Estrutura de Páginas
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🔐 Login (`/login`)
+- Campos: email e senha
+- Validação com `React Hook Form`
+- Redirecionamento:
+  - Se for administrador, vai para `/homeAdm`
+  - Se for usuário comum, vai para `/homeUser`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 📝 Cadastro (`/register`)
+- Campos: nome, email, senha e telefone
+- Todos os campos são obrigatórios
+- Email validado e convertido para letras minúsculas
+- Senha deve ter no mínimo 7 caracteres
+- Telefone com máscara de entrada
+- Armazenamento no `localStorage`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🏠 HomeUser (`/homeUser`)
+- Tela de boas-vindas ao usuário comum
+- Exibe nome, email e telefone
+- Botão de sair (limpa sessão)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 🧑‍💼 HomeAdm (`/homeAdm`)
+- Lista todos os usuários cadastrados
+- Permite editar nome, email, senha e telefone dos usuários
+- Validação de todos os campos ao editar
+- Atualização salva diretamente no `localStorage`
+- Botão de sair
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🗂️ Tecnologias Utilizadas
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React
+- React Router DOM
+- React Hook Form
+- React Input Mask
+- Styled-components
+- LocalStorage para persistência de dados
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🛠️ Como Rodar o Projeto
 
-### Analyzing the Bundle Size
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/MatCastanha/Login-Register.git
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Acesse o diretório:
+   ```bash
+   cd Login-Register
+   ```
 
-### Making a Progressive Web App
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. Rode o projeto:
+   ```bash
+   npm start
+   ```
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📁 Organização de Pastas
 
-### Deployment
+```
+├── public
+│ ├── Assets/
+│ ├── favicon.ico
+│ ├── index.html
+│ ├── manifest.json
+│ └── robots.txt
+├── src
+│ ├── Pages/
+│ │ ├── Home/
+│ │ ├── Login/
+│ │ └── Register/
+│ │
+│ ├── Routes/
+│ │ └── index.js
+│ │
+│ ├── Styles/
+│ │ └── global.js
+│ │
+│ ├── App.js
+│ ├── App.test.js
+│ ├── index.js
+│ └── reportWebVitals.js
+│
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 📌 Observações
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- O sistema não possui backend: toda persistência é feita via `localStorage`.
+- A conta do administrador deve estar previamente salva no `localStorage` com a chave `"Adm"` (exemplo: `{ nome: "Administrador", email: "admin@admin.com", senha: "1234567" }`).
+- Em um sistema real, a autenticação deveria ser feita com API e criptografia de senhas.
+
+---
